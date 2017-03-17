@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 import random
+
 from flask import Flask, render_template, flash, redirect, url_for, session
-from flask_wtf import Form
-from wtforms import IntegerField, SubmitField
-from wtforms.validators import Required, NumberRange
 from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from WTForms import IntegerField, SubmitField
+from WTForms.validators import NumberRange, DataRequired
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'very hard to guess string'
+app.config['SECRET_KEY'] = 'a string that is very hard to guess'
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 bootstrap = Bootstrap(app)
 
@@ -48,9 +49,9 @@ def guess():
     return render_template('guess.html', form=form)
 
 
-class GuessNumberForm(Form):
+class GuessNumberForm(FlaskForm):
     number = IntegerField('Enter an integer(0~1000)', validators=[
-        Required('Please enter a valid integer'),
+        DataRequired('Please enter a valid integer'),
         NumberRange(0, 1000, 'This integer should be between 0 and 1000!')])
     submit = SubmitField('Submit')
 
