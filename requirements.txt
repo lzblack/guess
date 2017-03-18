@@ -3,4 +3,3 @@ Flask-Bootstrap==3.3.7.1
 Flask-WTF==0.14.2
 WTForms==2.1
 uwsgi
-
