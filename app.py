@@ -54,7 +54,3 @@ class GuessNumberForm(FlaskForm):
         DataRequired('Please enter a valid integer'),
         NumberRange(0, 1000, 'This integer should be between 0 and 1000!')])
     submit = SubmitField('Submit')
-
-#
-# if __name__ == '__main__':
-#     app.run()
